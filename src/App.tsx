@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FilmList } from '@/components/FilmList';
+import { FilmCard } from '@/components/FilmCard';
 
 export interface Film {
   title: string;
@@ -36,11 +36,19 @@ const initialFilms: Film[] = [
 function App() {
   const [films] = useState<Film[]>(initialFilms);
 
+  const handleToggleWatched = (title: Film['title']) => {
+    console.log(`Toggle watch clicked on film ${title}`)
+  }
+
   return (
-    <>
-      <h1>Film Watchlist</h1>
-      <FilmList films={films} />
-    </>
+    <div className='p-5'>
+      <h1 className='text-3xl font-bold mb-5'>Film Watchlist</h1>
+      <div className='grid gap-4'>
+        {films?.map((film, index) => (
+          <FilmCard key={index} {...film} onToggleWatched={handleToggleWatched} />
+        ))}
+      </div>
+    </div>
   );
 }
 
