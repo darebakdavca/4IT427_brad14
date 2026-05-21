@@ -1,8 +1,10 @@
 import type { Film } from '@/types/film.types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useWatchList(initialFilms: Film[]) {
   const [films, setFilms] = useState(initialFilms);
+  const watchedCount = films.filter((film) => film.watched).length;
+  const statString = `(${watchedCount}/${films.length}) zhlédnuto`;
 
   const toggleWatched = (title: Film['title']) => {
     setFilms((prev) =>
@@ -14,5 +16,9 @@ export function useWatchList(initialFilms: Film[]) {
     setFilms((prev) => prev.map((f) => ({ ...f, watched: true })));
   };
 
-  return { films, toggleWatched, markAllAsWatched };
+  useEffect(() => {
+    document.title = `Watchlist ${statString}`;
+  }, [films, statString]);
+
+  return { films, toggleWatched, markAllAsWatched, statString };
 }

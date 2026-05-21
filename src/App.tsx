@@ -32,15 +32,7 @@ const initialFilms: Film[] = [
 ];
 
 function App() {
-  const { films, toggleWatched, markAllAsWatched } = useWatchList(initialFilms);
-
-  const watchedFilms = films.filter((film) => film.watched === true);
-
-  const statString = `(${watchedFilms.length}/${films.length}) zhlédnuto`
-
-  useEffect(() => {
-    document.title = `Watchlist ${statString}`;
-  }, [films, statString]);
+  const { films, toggleWatched, markAllAsWatched, statString } = useWatchList(initialFilms);
 
   return (
     <div className='p-5'>
