@@ -1,13 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FilmCard } from '@/components/FilmCard';
+import { Button } from '@/components/ui/button';
+import { IoMdCheckmark } from 'react-icons/io';
+import type { Film } from '@/types/film.types';
+import { useWatchList } from '@/hooks/useWatchList';
 
-export interface Film {
-  title: string;
-  year: number;
-  genre: string;
-  rating: number;
-  watched: boolean;
-}
+
 
 const initialFilms: Film[] = [
   {
@@ -34,21 +32,35 @@ const initialFilms: Film[] = [
 ];
 
 function App() {
-  const [films] = useState<Film[]>(initialFilms);
+  const { films, toggleWatched, markAllAsWatched } = useWatchList(initialFilms);
 
-  const handleToggleWatched = (title: Film['title']) => {
-    console.log(`Toggle watch clicked on film ${title}`)
-  }
+  const watchedFilms = films.filter((film) => film.watched === true);
+
+  const statString = `(${watchedFilms.length}/${films.length}) zhlédnuto`
+
+  useEffect(() => {
+    document.title = `Watchlist ${statString}`;
+  }, [films, statString]);
 
   return (
     <div className='p-5'>
-      <h1 className='text-3xl font-bold mb-5'>Film Watchlist</h1>
+      <div className='flex justify-between items-center mb-5'>
+        <h1 className='text-3xl font-bold flex items-center gap-3'>Film Watchlist
+          <span className='text-base'>
+            {` ${statString}`}
+          </span>
+        </h1>
+        <Button onClick={markAllAsWatched}>
+          Označit vše jako zhlédnuté
+          <IoMdCheckmark />
+        </Button>
+      </div>
       <div className='grid gap-4'>
         {films.length === 0 ? (
           <p className='text-muted-foreground'>No films provided.</p>
         ) : (
           films.map((film, index) => (
-            <FilmCard key={index} {...film} onToggleWatched={handleToggleWatched} />
+            <FilmCard key={index} {...film} onToggleWatched={() => toggleWatched(film.title)} />
           ))
         )}
       </div>
