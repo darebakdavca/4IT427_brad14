@@ -44,9 +44,13 @@ function App() {
     <div className='p-5'>
       <h1 className='text-3xl font-bold mb-5'>Film Watchlist</h1>
       <div className='grid gap-4'>
-        {films?.map((film, index) => (
-          <FilmCard key={index} {...film} onToggleWatched={handleToggleWatched} />
-        ))}
+        {films.length === 0 ? (
+          <p className='text-muted-foreground'>No films provided.</p>
+        ) : (
+          films.map((film, index) => (
+            <FilmCard key={index} {...film} onToggleWatched={handleToggleWatched} />
+          ))
+        )}
       </div>
     </div>
   );
