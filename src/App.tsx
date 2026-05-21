@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
 import { FilmCard } from '@/components/FilmCard';
 import { Button } from '@/components/ui/button';
 import { IoMdCheckmark } from 'react-icons/io';
 import type { Film } from '@/types/film.types';
 import { useWatchList } from '@/hooks/useWatchList';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 
 
@@ -36,16 +36,20 @@ function App() {
 
   return (
     <div className='p-5'>
-      <div className='flex justify-between items-center mb-5'>
-        <h1 className='text-3xl font-bold flex items-center gap-3'>Film Watchlist
+      <div className='grid grid-cols-1 md:grid-cols-2 mb-5 gap-2'>
+        <h1 className='text-2xl font-bold flex items-center gap-3 flex-wrap'>
+          Film Watchlist
           <span className='text-base'>
             {` ${statString}`}
           </span>
         </h1>
-        <Button onClick={markAllAsWatched}>
-          Označit vše jako zhlédnuté
-          <IoMdCheckmark />
-        </Button>
+        <div className='flex gap-2 justify-end w-full'>
+          <Button onClick={markAllAsWatched} className='grow md:grow-0'>
+            Označit vše jako zhlédnuté
+            <IoMdCheckmark />
+          </Button>
+          <ThemeSwitcher className='' />
+        </div>
       </div>
       <div className='grid gap-4'>
         {films.length === 0 ? (
