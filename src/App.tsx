@@ -31,7 +31,7 @@ function App() {
           <p className='text-muted-foreground'>No films provided.</p>
         ) : (
           films.map((film) => (
-            <FilmCard key={film.id} {...film} onToggleWatched={() => toggleWatched(film.id)} />
+            <FilmCard key={film.id} {...film} />
           ))
         )}
       </div>

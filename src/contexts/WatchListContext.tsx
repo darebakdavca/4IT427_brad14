@@ -93,7 +93,7 @@ export function WatchListProvider({ children }: { children: ReactNode }) {
 export function useWatchList() {
   const context = useContext(WatchListContext);
 
-  if (!context) throw new Error('Hook must be used within WatchListProvider.')
+  if (!context) throw new Error('useWatchList hook must be used within WatchListProvider.')
 
   return context;
 }

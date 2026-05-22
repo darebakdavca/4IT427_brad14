@@ -6,13 +6,10 @@ import { IoMdCheckmark } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 
-interface FilmCardProps extends Film {
-  onToggleWatched: (title: string) => void;
-}
 
-export function FilmCard({ id, title, year, genre, rating, watched, onToggleWatched }: FilmCardProps) {
+export function FilmCard({ id, title, year, genre, rating, watched }: Film) {
   const isRatingValid = rating > 0 && rating <= 10
-  const { removeFilm } = useWatchList();
+  const { removeFilm, toggleWatched } = useWatchList();
 
 
   return (
@@ -29,7 +26,7 @@ export function FilmCard({ id, title, year, genre, rating, watched, onToggleWatc
       </CardHeader>
       <CardFooter>
         <div className='flex justify-start gap-2'>
-          <Button onClick={() => onToggleWatched(title)}>
+          <Button onClick={() => toggleWatched(id)}>
             Změnit stav zhlédnutí
           </Button>
           <Button onClick={() => removeFilm(id)} variant={'destructive'}>
@@ -50,13 +47,13 @@ function SeenStatus({ watched }: { watched: boolean }) {
     <div>
       {watched ? (
         <div className='inline-flex items-center gap-2'>
-          <IoMdCheckmark />
+          <IoMdCheckmark className='text-green-500' />
           Zhlédnuto
         </div>
       ) :
         (
           <div className='inline-flex items-center gap-2'>
-            <RxCross2 />
+            <RxCross2 className='text-red-500' />
             Nezhlédnuto
           </div>
         )}
