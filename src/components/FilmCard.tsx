@@ -13,7 +13,7 @@ export function FilmCard({ id, title, year, genre, rating, watched }: Film) {
 
 
   return (
-    <Card>
+    <Card className='hover:translate-y-0.5 duration-300 hover:border-primary border'>
       <CardHeader>
         <CardTitle className='flex justify-between items-center'>
           <span>
@@ -47,13 +47,13 @@ function SeenStatus({ watched }: { watched: boolean }) {
     <div>
       {watched ? (
         <div className='inline-flex items-center gap-2'>
-          <IoMdCheckmark className='text-green-500' />
+          <IoMdCheckmark className='text-green-500 size-6' />
           Zhlédnuto
         </div>
       ) :
         (
           <div className='inline-flex items-center gap-2'>
-            <RxCross2 className='text-red-500' />
+            <RxCross2 className='text-red-500 size-6' />
             Nezhlédnuto
           </div>
         )}
