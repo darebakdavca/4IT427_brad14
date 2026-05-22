@@ -8,7 +8,7 @@ export function ThemeSwitcher({ className }: { className: string }) {
   const { theme, triggerTheme } = useTheme();
   return (
 
-    <Button className={cn(className)} variant='secondary' onClick={triggerTheme}>
+    <Button className={cn(className)} variant={'outline'} onClick={triggerTheme}>
       <span className='inline-flex items-center gap-2'>
         {theme === 'dark' ?
           <>

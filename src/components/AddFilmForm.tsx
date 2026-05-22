@@ -13,6 +13,8 @@ import { useState, type FormEvent } from "react";
 import { FaPlus } from "react-icons/fa";
 
 export function AddFilmForm() {
+  const { addFilm } = useWatchList();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const [title, setTitle] = useState<string>('');
@@ -20,7 +22,6 @@ export function AddFilmForm() {
   const [genre, setGenre] = useState<string>('');
   const [rating, setRating] = useState<number>(5);
 
-  const { addFilm } = useWatchList();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ export function AddFilmForm() {
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button variant={'outline'} className="w-full">
+          <Button variant={'secondary'} className="w-full">
             <FaPlus />
             Add new film</Button>
         </DialogTrigger>

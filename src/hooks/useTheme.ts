@@ -1,8 +1,17 @@
 import type { Theme } from '@/types/theme.types';
 import { useEffect, useState } from 'react';
 
+function getDeviceTheme(): Theme {
+  if (window.matchMedia('(prefers-color-scheme: dark').matches) {
+    return 'dark';
+  }
+
+  return 'light';
+}
+
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>(getDeviceTheme);
+
   const triggerTheme = () => {
     setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
   };

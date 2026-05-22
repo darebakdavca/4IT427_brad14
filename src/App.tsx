@@ -1,15 +1,12 @@
 import { FilmCard } from '@/components/FilmCard';
-import { Button } from '@/components/ui/button';
-import { IoMdCheckmark } from 'react-icons/io';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { useWatchList } from '@/contexts/WatchListContext';
 import { AddFilmForm } from '@/components/AddFilmForm';
-import { Dialog } from '@/components/ui/dialog';
 import { MarkAllAsWatchedBtn } from '@/components/MakrAllAsWatchedBtn';
 
 
 function App() {
-  const { toggleWatched, films, statString } = useWatchList();
+  const { films, statString } = useWatchList();
 
   return (
     <div className='p-5 grid gap-4'>
