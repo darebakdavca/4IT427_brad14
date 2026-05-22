@@ -1,4 +1,4 @@
-import { FilmCard } from "@/components/films/FilmCard";
+import { FilmCard } from "@/components/FilmCard";
 import { useWatchList } from "@/contexts/WatchListContext";
 
 export function WatchListPage() {

@@ -1,5 +1,5 @@
-import { AddFilmForm } from "@/components/films/AddFilmForm";
-import { MarkAllAsWatchedBtn } from "@/components/films/MakrAllAsWatchedBtn";
+import { AddFilmForm } from "@/components/AddFilmForm";
+import { MarkAllAsWatchedBtn } from "@/components/MakrAllAsWatchedBtn";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
 import { useWatchList } from "@/contexts/WatchListContext";
