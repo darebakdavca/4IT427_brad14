@@ -11,9 +11,11 @@ import { Slider } from "@/components/ui/slider";
 import { useWatchList } from "@/contexts/WatchListContext";
 import { useState, type FormEvent } from "react";
 import { FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export function AddFilmForm() {
   const { addFilm } = useWatchList();
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,6 +36,8 @@ export function AddFilmForm() {
     setGenre('')
     setTitle('')
     setYear('')
+
+    navigate('/films')
   }
 
   return (
