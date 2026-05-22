@@ -10,7 +10,7 @@ export function FilmsLayout() {
 
   return (
     <div className='p-5 grid gap-4'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+      <div className='grid grid-cols-2 gap-2'>
         <NavLink to={"/"}>
           <h1 className='text-2xl font-bold flex items-center gap-3 flex-wrap'>
             Film Watchlist
