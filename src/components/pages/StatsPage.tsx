@@ -1,7 +1,7 @@
 export function StatsPage() {
   return (
     <div>
-      <p>Here would be some fun stats...</p>
+      <p>Zde by byly nějaké zábavné statistiky...</p>
     </div>
   );
 }

@@ -46,54 +46,53 @@ export function AddFilmForm() {
         <DialogTrigger asChild>
           <Button variant={'secondary'} className="w-full">
             <FaPlus />
-            Add new film</Button>
+            Přidat nový film</Button>
         </DialogTrigger>
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <DialogHeader className="mb-5">
-              <DialogTitle>Add new film</DialogTitle>
+              <DialogTitle>Přidat nový film</DialogTitle>
               <DialogDescription>
-                Add new film data here. Click save when you&apos;re
-                done.
+                Zadejte údaje o filmu. Po dokončení změny uložte.
               </DialogDescription>
             </DialogHeader>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="title">Title</FieldLabel>
-                <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Your title" />
+                <FieldLabel htmlFor="title">Název</FieldLabel>
+                <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Borat" />
                 <FieldDescription>
-                  The title of your film
+                  Název filmu
                 </FieldDescription>
               </Field>
               <Field>
-                <FieldLabel htmlFor="year">Year</FieldLabel>
+                <FieldLabel htmlFor="year">Rok</FieldLabel>
                 <Input id="year" value={year} onChange={(e) => setYear(e.target.value)} type="number" placeholder="1999" />
                 <FieldDescription>
-                  Year of release
+                  Rok vydání
                 </FieldDescription>
               </Field>
               <Field>
-                <FieldLabel htmlFor="genre">Genre</FieldLabel>
-                <Input id="genre" value={genre} onChange={(e) => setGenre(e.target.value)} type="text" placeholder="comedy" />
+                <FieldLabel htmlFor="genre">Žánr</FieldLabel>
+                <Input id="genre" value={genre} onChange={(e) => setGenre(e.target.value)} type="text" placeholder="komedie" />
                 <FieldDescription>
-                  The main genre
+                  Hlavní žánr
                 </FieldDescription>
               </Field>
               <Field>
                 <div className="flex items-center justify-between">
-                  <FieldLabel htmlFor="title">Rating</FieldLabel>
+                  <FieldLabel htmlFor="rating">Hodnocení</FieldLabel>
                   <span className="text-sm font-medium">{rating}/10</span>
                 </div>
-                <Slider min={1} value={[rating]} max={10} step={1} onValueChange={(value) => setRating(value[0])} />
+                <Slider id="rating" min={1} value={[rating]} max={10} step={1} onValueChange={(value) => setRating(value[0])} />
                 <FieldDescription>
-                  The rating you give
+                  Vaše hodnocení filmu
                 </FieldDescription>
               </Field>
               <Field orientation="horizontal">
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Uložit</Button>
                 <DialogClose asChild>
                   <Button type="button" variant="outline">
-                    Cancel
+                    Zrušit
                   </Button>
                 </DialogClose>
               </Field>

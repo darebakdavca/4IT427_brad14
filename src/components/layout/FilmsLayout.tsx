@@ -1,7 +1,7 @@
 import { AddFilmForm } from "@/components/AddFilmForm";
 import { MarkAllAsWatchedBtn } from "@/components/MakrAllAsWatchedBtn";
+import { NavMenu } from "@/components/NavMenu";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import { Button } from "@/components/ui/button";
 import { useWatchList } from "@/contexts/WatchListContext";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -19,22 +19,7 @@ export function FilmsLayout() {
             </span>
           </h1>
         </NavLink>
-        <div className="flex justify-end">
-          <NavLink to={"/films"} end>
-            {({ isActive }) =>
-              <Button variant={'link'} className={isActive ? 'underline' : ''}>
-                Watchlist
-              </Button>
-            }
-          </NavLink>
-          <NavLink to={"/films/stats"}>
-            {({ isActive }) =>
-              <Button variant={'link'} className={isActive ? 'underline' : ''}>
-                Stats
-              </Button>
-            }
-          </NavLink>
-        </div>
+        <NavMenu />
       </div>
       <div className="gap-4 grid">
         <div className='flex gap-2 justify-end w-full'>
